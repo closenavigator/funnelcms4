@@ -27,18 +27,22 @@ const nextConfig = {
   redirects,
   webpack: (config, { isServer }) => {
     // Ensure proper module resolution
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, './src'),
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve.alias,
+        '@': path.resolve(__dirname, './src'),
+      },
+      modules: [
+        path.resolve(__dirname, './src'),
+        'node_modules',
+        ...(config.resolve.modules || []),
+      ],
+      extensionAlias: {
+        '.js': ['.js', '.ts', '.tsx'],
+        '.jsx': ['.jsx', '.tsx'],
+      },
     }
-    
-    // Add proper module resolution for production
-    config.resolve.modules = [
-      path.resolve(__dirname, './src'),
-      'node_modules',
-      ...config.resolve.modules || [],
-    ]
-
     return config
   },
 }
