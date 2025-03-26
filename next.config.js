@@ -1,5 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
-
+import path from 'path'
 import redirects from './redirects.js'
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -11,7 +11,7 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': './src',
+      '@': path.join(process.cwd(), 'src'),
     }
     return config
   },
