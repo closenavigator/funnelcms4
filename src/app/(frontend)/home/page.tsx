@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
-import { HeroSection } from '@/components/hero-section'
+import HeroSection from '@/components/hero-section'
 
 export const metadata: Metadata = {
   title: 'Home',
